@@ -18,8 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
+
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = " "
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -33,3 +34,12 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+--Telescope
+local builtin = require("telescope.builtin")
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set('n', '<leader>lg', builtin.live_grep, { desc = "Telescope find files" })
+
+
+--Neotree
+vim.keymap.set('n', '<leader>n', ":Neotree filesystem reveal current<CR>")

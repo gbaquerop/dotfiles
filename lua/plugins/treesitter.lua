@@ -6,7 +6,10 @@ return {
 			ensure_installed = {"c", "lua", "markdown"},
 			highlight = {
 				enable = true
-			}
+			},
+			indent = {
+				enable = true 
+			},
 		})
 	end,
 }

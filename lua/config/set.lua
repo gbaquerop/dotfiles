@@ -6,8 +6,8 @@ vim.opt.incsearch = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.smarttab = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 --Lines Options
 vim.opt.scrolloff = 8
