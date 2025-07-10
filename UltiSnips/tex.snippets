@@ -1,0 +1,61 @@
+global !p
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment(): 
+    return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+    return x != '0' and x != '0'
+
+endglobal
+
+snippet sign "Signature"
+Firmado por,
+
+gbaquero
+endsnippet
+
+snippet init "begin"
+\begin{$1}
+$2
+\end{$1}
+endsnippet
+
+snippet im "Inline Math"
+$$1$
+endsnippet
+
+snippet dm "Display Math"
+\[$1\]
+endsnippet
+
+context "math()"
+snippet sq "Square" iA 
+^2
+endsnippet
+
+context "math()"
+snippet cb "Cube" iA
+^3
+endsnippet
+
+context "math()"
+snippet exp "NExponent" iA
+^$1
+endsnippet
+
+snippet bf "Bold" 
+\textbf{$1}
+endsnippet
+
+snippet ul "Underline" 
+\underline{$1}
+endsnippet
+
+snippet it "Italic" 
+\textit{$1}
+endsnippet
+
+

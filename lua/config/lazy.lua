@@ -43,3 +43,11 @@ vim.keymap.set('n', '<leader>lg', builtin.live_grep, { desc = "Telescope find fi
 
 --Neotree
 vim.keymap.set('n', '<leader>n', ":Neotree filesystem reveal current<CR>")
+
+--Terminal
+vim.keymap.set('t', '<C-w>h', "<C-\\><C-n><C-w>h", {silent = true})
+vim.keymap.set('n', '<leader>vt', function()
+	vim.cmd('vsplit')
+	vim.cmd('wincmd l')
+	vim.cmd('terminal')
+end, {noremap = true, silent = true})

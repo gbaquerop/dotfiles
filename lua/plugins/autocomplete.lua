@@ -1,24 +1,27 @@
 return {
-	{	
+	{
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	{
-		"L3MON4D3/LuaSnip",
+		"SirVer/ultisnips",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			"saadparwaiz1/cmp_luasnip",
+			config = function()
+				require("luasnip.loaders.from_vscode").lazy_load()
+				require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.fn.stdpath("config") .. "/snippets/" })
+			end,
+			"quangnguyen30192/cmp-nvim-ultisnips",
 		},
 	},
 	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			local cmp = require("cmp")
-			--require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						vim.fn["UltiSnips#Anon"](args.body)
 					end,
 				},
 				window = {
@@ -26,21 +29,14 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = {
-					["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-					["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-					["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-					["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-					["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-					["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-					["<C-e>"] = cmp.mapping({
-						i = cmp.mapping.abort(),
-						c = cmp.mapping.close(),
-					}),
+					["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+					["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+					["<C-y>"] = cmp.config.disable,
 					["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert }),
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
+					{ name = "ultisnips" },
 				}, {
 					{ name = "buffer" },
 				}),
