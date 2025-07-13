@@ -32,7 +32,7 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "gruvbox" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+checker = { enabled = true, notify = false },
 })
 
 --Telescope
@@ -46,8 +46,15 @@ vim.keymap.set('n', '<leader>n', ":Neotree filesystem reveal current<CR>")
 
 --Terminal
 vim.keymap.set('t', '<C-w>h', "<C-\\><C-n><C-w>h", {silent = true})
-vim.keymap.set('n', '<leader>vt', function()
+vim.keymap.set('n', '<leader>ot', function()
 	vim.cmd('vsplit')
 	vim.cmd('wincmd l')
+	vim.cmd('vertical-resize -15')
 	vim.cmd('terminal')
 end, {noremap = true, silent = true})
+
+--Manipulating Code
+vim.keymap.set('n', '<leader>md', "ddp", {silent = true, desc = "Move line down"})
+vim.keymap.set('n', '<leader>mu', "ddkP", {silent = true, desc = "Move line up"})
+
+vim.keymap.set('n', '<leader>dl', ":t .<CR>", {silent = true, desc = "Duplicate line"})
