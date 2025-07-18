@@ -29,8 +29,8 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = {
-					["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-					["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+					["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+					["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 					["<C-y>"] = cmp.config.disable,
 					["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert }),
 				},

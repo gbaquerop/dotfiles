@@ -20,7 +20,6 @@ return {
 	},
 	{
 		'simrat39/rust-tools.nvim'
-
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -45,10 +44,10 @@ return {
 			vim.lsp.config('texlab', {
 				capabilities = capabilities
 			})
-
 			vim.lsp.config('rust_analyzer', {
 				capabilities = capabilities
 			})
 		end,
+
 	},
 }
